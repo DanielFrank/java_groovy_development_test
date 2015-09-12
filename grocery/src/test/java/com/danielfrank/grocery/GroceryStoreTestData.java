@@ -46,7 +46,6 @@ public class GroceryStoreTestData {
 		groceryWithTwoEmptyRegisters = new GroceryStore(3);
 		Customer customer = new CustomerA(1,1);
 		groceryWithTwoEmptyRegisters.getRegister(2).addCustomer(customer);
-		groceryWithTwoEmptyRegisters.getRegister(1).addCustomer(customer);
 	}
 	
 	/**sets up "normal" grocery with three registers

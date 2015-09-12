@@ -37,7 +37,15 @@ public class GroceryStore {
 	 * @return Register
 	 * */
 	public Register getShortestLine() {
-		return registers[0];
+		Register result = registers[0];
+		if (result.getCustomerCount() == 0) return result;
+		for (int i = 1; i < registers.length; i++) {
+			if (registers[i].getCustomerCount() < result.getCustomerCount()) {
+				result = registers[i];
+				if (result.getCustomerCount() == 0) return result;
+			}
+		}
+		return result;
 	}
 	
 	/** Gets register with last customer having least number of items
@@ -45,7 +53,15 @@ public class GroceryStore {
 	 * @return Register
 	 * */
 	public Register getLineWithCustomerLastLeastItems() {
-		return registers[0];
+		Register result = registers[0];
+		if (result.getCustomerCount() == 0) return result;
+		for (int i = 1; i < registers.length; i++) {
+			if (registers[i].getCustomerCount() == 0) return registers[i];
+			if (registers[i].getLastCustomer().getItemCount() < result.getLastCustomer().getItemCount()) {
+				result = registers[i];
+			}
+		}
+		return result;
 	}
 	
 
