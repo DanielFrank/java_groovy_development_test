@@ -10,6 +10,7 @@ import junit.framework.TestCase;
  *
  */
 public class CustomerTest extends TestCase {
+	GroceryStoreTestData data = new GroceryStoreTestData();
 
 	/* (non-Javadoc)
 	 * @see junit.framework.TestCase#setUp()
@@ -17,7 +18,9 @@ public class CustomerTest extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 	}
+	
 
+	
 	/* (non-Javadoc)
 	 * @see junit.framework.TestCase#tearDown()
 	 */
@@ -66,5 +69,64 @@ public class CustomerTest extends TestCase {
 		assertEquals(0,customer1.compareTo(customer2));
 		assertEquals(0,customer2.compareTo(customer1));
 	}
+
+	/**Tests customer A chooses register with fewest people*/
+	public void testCustomerAChoosesCorrectly(){
+		Customer customer = new CustomerA(1, 2);
+		Register register = customer.chooseRegister(data.grocery);
+		assertEquals(register,data.grocery.getRegister(1));
+	}
 	
+	/**Tests customer B chooses register with fewest items at end*/
+	public void testCustomerBChoosesCorrectly(){
+		Customer customer = new CustomerB(1, 2);
+		Register register = customer.chooseRegister(data.grocery);
+		assertEquals(register,data.grocery.getRegister(2));
+	}
+	
+	/**Tests customer A chooses empty register*/
+	public void testCustomerAWithEmptyRegister(){
+		Customer customer = new CustomerA(1, 2);
+		Register register = customer.chooseRegister(data.groceryWithEmptyRegister);
+		assertEquals(register,data.groceryWithEmptyRegister.getRegister(3));
+	}
+
+	/**Tests customer B chooses empty register*/
+	public void testCustomerBWithEmptyRegister(){
+		Customer customer = new CustomerB(1, 2);
+		Register register = customer.chooseRegister(data.groceryWithEmptyRegister);
+		assertEquals(register,data.groceryWithEmptyRegister.getRegister(3));
+	}
+	
+	/**Tests customer A chooses empty register with smallest number*/
+	public void testCustomerAWithTwoEmptyRegisters(){
+		Customer customer = new CustomerA(1, 2);
+		Register register = customer.chooseRegister(data.groceryWithTwoEmptyRegisters);
+		assertEquals(register,data.groceryWithEmptyRegister.getRegister(1));
+	}
+
+	/**Tests customer B chooses empty register*/
+	public void testCustomerBWithTwoEmptyRegisters(){
+		Customer customer = new CustomerB(1, 2);
+		Register register = customer.chooseRegister(data.groceryWithTwoEmptyRegisters);
+		assertEquals(register,data.groceryWithEmptyRegister.getRegister(1));
+	}
+
+	/**Tests customer A chooses equal-sized-line register with smallest number*/
+	public void testCustomerAWithTwoEqualSizedLines(){
+		Customer customer = new CustomerA(1, 2);
+		Register register = customer.chooseRegister(data.groceryWithTwoEmptyRegisters);
+		assertEquals(register,data.groceryWithEmptyRegister.getRegister(2));
+	}
+	
+	/**Tests customer A chooses equal-item register with smallest number
+	 * Unsure if size of line should be considered (see CustomerB.chooseRegister notes)
+	 * so logic change may break this test.
+	 * 
+	 * */
+	public void testCustomerBWithTwoEqualSizedLines(){
+		Customer customer = new CustomerA(1, 2);
+		Register register = customer.chooseRegister(data.groceryWithTwoEmptyRegisters);
+		assertEquals(register,data.groceryWithEmptyRegister.getRegister(2));
+	}
 }

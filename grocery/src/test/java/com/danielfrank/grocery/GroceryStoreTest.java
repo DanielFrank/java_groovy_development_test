@@ -3,11 +3,10 @@ package com.danielfrank.grocery;
 import junit.framework.TestCase;
 
 public class GroceryStoreTest extends TestCase {
-	GroceryStore myGroceryStore;
+	GroceryStoreTestData data = new GroceryStoreTestData();
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		myGroceryStore = new GroceryStore(3);
 	}
 
 	protected void tearDown() throws Exception {
@@ -18,8 +17,17 @@ public class GroceryStoreTest extends TestCase {
 	 * Tests creation has expected number of registers
 	 */
 	public void testCreate(){
-		assertEquals(3, myGroceryStore.getRegisterCount());
+		assertEquals(2, data.grocery.getRegisterCount());
 	}
 
+	/**
+	 * Tests last register is Trainee
+	 */
+	public void testLastRegister(){
+		assertTrue(data.grocery.getRegister(2).getCashier() instanceof TraineeCashier );
+	}
+	
+	
 
+	
 }

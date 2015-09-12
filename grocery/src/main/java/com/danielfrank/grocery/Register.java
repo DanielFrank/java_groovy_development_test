@@ -11,6 +11,11 @@ public class Register {
 		checkOutLine = new LinkedList<Customer>();
 	}
 
+	/** get Register's Cashier */
+	public Cashier getCashier() {
+		return cashier;
+	}
+
 	/** add Customer to end of line 
 	 * @param the customer in question
 	 * */
@@ -39,6 +44,20 @@ public class Register {
 	 * */
 	public Customer getLastCustomer(){
 		return checkOutLine.peekLast();
+	}
+	
+	/** Register does activity of a minute. If there's a customer, serve him
+	 * If said customer now has no items, remove him from the line.
+	 * 
+	 */
+	public void minutePass() {
+		if (checkOutLine.size() > 0) {
+			cashier.serveCustomer(checkOutLine.peekFirst());
+			if (checkOutLine.peekFirst().getItemCount() == 0) {
+				checkOutLine.removeFirst();
+			}
+		}
+		
 	}
 
 }
