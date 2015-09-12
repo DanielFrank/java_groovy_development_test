@@ -32,6 +32,16 @@ public class GroceryStore {
 		return registers.length;
 	}
 	
+	/** Checks if all the registers have empty customer lines
+	 * @return true unless any register has a customer
+	 * */
+	public boolean checkAllRegistersEmpty(){
+		for (int i = 0; i < registers.length; i++) {
+			if (registers[i].getCustomerCount()>0) return false;
+		}
+		return true;
+	}
+	
 	/** Gets register with least number of Customers
 	 * Returns lower number register all else being equal
 	 * @return Register
@@ -63,6 +73,16 @@ public class GroceryStore {
 		}
 		return result;
 	}
+	
+	/** Loop through Registers and run minutePass on them all
+	 * 
+	 */
+	public void minutePass() {
+		for (int i = 0; i < registers.length; i++) {
+			registers[i].minutePass();
+		}
+	}
+
 	
 
 	

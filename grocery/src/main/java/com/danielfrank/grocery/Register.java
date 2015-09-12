@@ -57,7 +57,6 @@ public class Register {
 				checkOutLine.removeFirst();
 			}
 		}
-		
 	}
 
 }

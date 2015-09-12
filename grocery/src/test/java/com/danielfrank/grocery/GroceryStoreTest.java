@@ -27,6 +27,14 @@ public class GroceryStoreTest extends TestCase {
 		assertTrue(data.grocery.getRegister(2).getCashier() instanceof TraineeCashier );
 	}
 	
+	/**
+	 * Tests allEmpty function for both cases
+	 */
+	public void testAllEmpty(){
+		assertTrue(data.groceryWithAllEmptyRegister.checkAllRegistersEmpty());
+		assertFalse(data.groceryWithEmptyRegister.checkAllRegistersEmpty());
+	}
+
 	/**Tests getShortestLine chooses register with fewest people*/
 	public void testGetShortestLine(){
 		Register register = data.grocery.getShortestLine();

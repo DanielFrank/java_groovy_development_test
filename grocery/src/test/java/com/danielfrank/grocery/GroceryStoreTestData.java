@@ -2,6 +2,7 @@ package com.danielfrank.grocery;
 
 public class GroceryStoreTestData {
 	public GroceryStore grocery;
+	public GroceryStore groceryWithAllEmptyRegister;
 	public GroceryStore groceryWithEmptyRegister;
 	public GroceryStore groceryWithTwoEmptyRegisters;
 	public GroceryStore groceryWithTwoEqualSizedLines;
@@ -12,6 +13,7 @@ public class GroceryStoreTestData {
 		setUpGroceryWithEmptyRegister();
 		setUpGroceryWithTwoEmptyRegisters();
 		setUpGroceryWithTwoEqualSizedLastCustomerItems();
+		setUpGroceryWithAllEmptyRegister();
 		setUpGroceryWithTwoEqualSizedLines();
 		setUpGroceryWithTwoEqualSizedLastCustomerItems();
 	}
@@ -27,6 +29,12 @@ public class GroceryStoreTestData {
 		grocery.getRegister(1).addCustomer(new CustomerA(1,5));
 	}
 
+	/**sets up grocery with two registers, both no customers
+	 */
+	protected void setUpGroceryWithAllEmptyRegister(){
+		groceryWithAllEmptyRegister = new GroceryStore(2);
+	}
+
 	/**sets up grocery with three registers
 	 * Registers 1 and 2 has 1 customer with 1 item
 	 * Register 3 has no customers
@@ -37,7 +45,8 @@ public class GroceryStoreTestData {
 		groceryWithEmptyRegister.getRegister(2).addCustomer(customer);
 		groceryWithEmptyRegister.getRegister(1).addCustomer(customer);
 	}
-
+	
+	
 	/**sets up grocery with three registers
 	 * Register 2 has 1 customer with 1 item
 	 * Registers 1 and 3 has no customers
