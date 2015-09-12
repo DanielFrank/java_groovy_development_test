@@ -102,31 +102,31 @@ public class CustomerTest extends TestCase {
 	public void testCustomerAWithTwoEmptyRegisters(){
 		Customer customer = new CustomerA(1, 2);
 		Register register = customer.chooseRegister(data.groceryWithTwoEmptyRegisters);
-		assertEquals(register,data.groceryWithEmptyRegister.getRegister(1));
+		assertEquals(register,data.groceryWithTwoEmptyRegisters.getRegister(1));
 	}
 
 	/**Tests customer B chooses empty register*/
 	public void testCustomerBWithTwoEmptyRegisters(){
 		Customer customer = new CustomerB(1, 2);
 		Register register = customer.chooseRegister(data.groceryWithTwoEmptyRegisters);
-		assertEquals(register,data.groceryWithEmptyRegister.getRegister(1));
+		assertEquals(register,data.groceryWithTwoEmptyRegisters.getRegister(1));
 	}
 
 	/**Tests customer A chooses equal-sized-line register with smallest number*/
 	public void testCustomerAWithTwoEqualSizedLines(){
 		Customer customer = new CustomerA(1, 2);
-		Register register = customer.chooseRegister(data.groceryWithTwoEmptyRegisters);
-		assertEquals(register,data.groceryWithEmptyRegister.getRegister(2));
+		Register register = customer.chooseRegister(data.groceryWithTwoEqualSizedLines);
+		assertEquals(register,data.groceryWithTwoEqualSizedLines.getRegister(2));
 	}
 	
-	/**Tests customer A chooses equal-item register with smallest number
+	/**Tests customer B chooses equal-item register with smallest number
 	 * Unsure if size of line should be considered (see CustomerB.chooseRegister notes)
 	 * so logic change may break this test.
 	 * 
 	 * */
-	public void testCustomerBWithTwoEqualSizedLines(){
-		Customer customer = new CustomerA(1, 2);
-		Register register = customer.chooseRegister(data.groceryWithTwoEmptyRegisters);
-		assertEquals(register,data.groceryWithEmptyRegister.getRegister(2));
+	public void testCustomerBWithTwoEqualSizedLineItems(){
+		Customer customer = new CustomerB(1, 2);
+		Register register = customer.chooseRegister(data.groceryWithTwoEqualSizedLastCustomerItems);
+		assertEquals(register,data.groceryWithTwoEqualSizedLastCustomerItems.getRegister(2));
 	}
 }

@@ -25,8 +25,27 @@ public class GroceryStore {
 		return registers[number-1];
 	}
 	
+	/** Gets count of Registers
+	 * @return count of Registers
+	 * */
 	public int getRegisterCount() {
 		return registers.length;
+	}
+	
+	/** Gets register with least number of Customers
+	 * Returns lower number register all else being equal
+	 * @return Register
+	 * */
+	public Register getShortestLine() {
+		return registers[0];
+	}
+	
+	/** Gets register with last customer having least number of items
+	 * Returns lower number register all else being equal
+	 * @return Register
+	 * */
+	public Register getLineWithCustomerLastLeastItems() {
+		return registers[0];
 	}
 	
 

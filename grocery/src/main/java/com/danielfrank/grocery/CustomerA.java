@@ -25,7 +25,7 @@ public class CustomerA extends Customer {
 	 * @return Register returned
 	 */
 	protected Register chooseRegister(GroceryStore g){
-		return new Register(new Cashier());
+		return g.getShortestLine();
 	}
 
 }
