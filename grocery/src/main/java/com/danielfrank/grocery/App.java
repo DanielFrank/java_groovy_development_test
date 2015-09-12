@@ -49,22 +49,22 @@ public class App
 		}
 		Collections.sort(customers);
 		int index = 0;
-		int minute = 1;
+		int minute = 0;
 		while (index < customers.size()) {
+			minute++;
 			grocerySim.minutePass(); //Process customers in line
 			Customer customer = customers.get(index); 
 			//Put any customers in queue that arrived "now"
 			while(index < customers.size() && customer.getArrivalTime() == minute) {
-				customer.chooseRegister(grocerySim);
+				customer.getInLine(grocerySim);
 				index++;
 				if (index < customers.size()) customer = customers.get(index);
 			}
-			minute++;
 		}
 		//We've put all the customers in a register line, now process those still in line
 		while(!grocerySim.checkAllRegistersEmpty()) {
-			grocerySim.minutePass();
 			minute++;
+			grocerySim.minutePass();
 		}
 		System.out.println("Finished at t="+minute+" minutes");
     }
