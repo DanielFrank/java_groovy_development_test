@@ -67,7 +67,7 @@ public class RegisterTest extends TestCase {
 		testRegister.addCustomer(new CustomerA(3,11));
 		testRegister.minutePass();
 		assertTrue(firstCustomer != testRegister.getFirstCustomer());
-		assertTrue(secondCustomer != testRegister.getFirstCustomer());
+		assertTrue(secondCustomer == testRegister.getFirstCustomer());
 	}
 
 	
